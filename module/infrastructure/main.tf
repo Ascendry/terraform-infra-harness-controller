@@ -1,27 +1,21 @@
 resource "harness_platform_infrastructure" "example" {
-  identifier      = "identifier"
-  name            = "name"
-  org_id          = "orgIdentifer"
-  project_id      = "projectIdentifier"
-  env_id          = "environmentIdentifier"
-  type            = "KubernetesDirect"
-  deployment_type = "Kubernetes"
-  yaml            = <<-EOT
-        infrastructureDefinition:
-        name: name
-        identifier: identifier
-        description: ""
-        tags:
-          asda: ""
-        orgIdentifier: orgIdentifer
-        projectIdentifier: projectIdentifier
-        environmentRef: environmentIdentifier
-        deploymentType: Kubernetes
-        type: KubernetesDirect
-        spec:
-          connectorRef: account.gfgf
-          namespace: asdasdsa
-          releaseName: release-<+INFRA_KEY>
-          allowSimultaneousDeployments: false
-      EOT
+  identifier      = var.harness_infrastructure_identifier
+  name            = var.harness_infrastructure_name
+  org_id          = var.harness_infrastructure_org_identifier
+  project_id      = var.harness_infrastructure_project_identifier
+  env_id          = var.harness_infrastructure_env_identifier
+  type            = var.harness_infrastructure_type
+  deployment_type = var.harness_infrastructure_deployment_type
+  yaml = templatefile("${path.module}/infrastructure-definition.yaml.tpl", {
+    infrastructureName             = var.harness_infrastructure_name
+    infrastructureIdentifier       = var.harness_infrastructure_identifier
+    orgIdentifier                  = var.harness_infrastructure_org_identifier
+    projectIdentifier              = var.harness_infrastructure_project_identifier
+    envIdentifier                  = var.harness_infrastructure_env_identifier
+    deploymentType                 = var.harness_infrastructure_deployment_type
+    type                           = var.harness_infrastructure_type
+    connectorRef                   = var.harness_infrastructure_connector_identifier
+    namespace                      = var.harness_infrastructure_namespace
+    allow_simultaneous_deployments = var.harness_infrastructure_allow_simultaneous_deployments
+  })
 }
