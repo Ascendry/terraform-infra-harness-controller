@@ -30,24 +30,22 @@ module "delegate" {
 }
 
 module "harness_platform_connector_kubernetes" {
-  source                           = "./module/kubernetes"
-  k8s_connector_identifier         = var.harness_delegate_name
-  k8s_cluster_name                 = var.harness_delegate_name
-  k8s_connector_name               = var.harness_delegate_name
-  harness_delegate_name            = var.harness_delegate_name
-  k8s_connector_project_identifier = var.harness_project_identifier
-  k8s_connector_org_identifier     = var.harness_org_identifier
-  depends_on                       = [module.delegate]
+  source                       = "./module/kubernetes"
+  k8s_connector_identifier     = var.harness_delegate_name
+  k8s_cluster_name             = var.harness_delegate_name
+  k8s_connector_name           = var.harness_delegate_name
+  harness_delegate_name        = var.harness_delegate_name
+  k8s_connector_org_identifier = var.harness_org_identifier
+  depends_on                   = [module.delegate]
 }
 
 module "harness_platform_environment" {
-  source                         = "./module/environment"
-  harness_env_name               = var.harness_env_name
-  harness_env_identifier         = var.harness_env_name
-  harness_org_identifier         = var.harness_org_identifier
-  harness_env_project_identifier = var.harness_project_identifier
-  harness_env_type               = var.harness_env_type # PreProduction
-  depends_on                     = [module.harness_platform_connector_kubernetes]
+  source                 = "./module/environment"
+  harness_env_name       = var.harness_env_name
+  harness_env_identifier = var.harness_env_name
+  harness_org_identifier = var.harness_org_identifier
+  harness_env_type       = var.harness_env_type # PreProduction
+  depends_on             = [module.harness_platform_connector_kubernetes]
 }
 
 module "harness_platform_infrastructure" {
@@ -55,7 +53,6 @@ module "harness_platform_infrastructure" {
   harness_infrastructure_identifier                     = var.harness_delegate_name
   harness_infrastructure_name                           = var.harness_delegate_name
   harness_infrastructure_org_identifier                 = var.harness_org_identifier
-  harness_infrastructure_project_identifier             = var.harness_project_identifier
   harness_infrastructure_env_identifier                 = var.harness_env_name
   harness_infrastructure_type                           = var.harness_infrastructure_type            #KUBERNETES
   harness_infrastructure_deployment_type                = var.harness_infrastructure_deployment_type #KubernetesDirect

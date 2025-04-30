@@ -2,12 +2,12 @@ variable "harness_org_identifier" {
   type = string
 }
 
-variable "harness_project_identifier" {
-  type = string
-}
+# variable "harness_project_identifier" {
+#   type = string
+# }
 
 variable "harness_account_id" {
-  type = string
+  type      = string
   sensitive = true
 }
 
@@ -61,16 +61,16 @@ variable "harness_infrastructure_deployment_type" {
 }
 
 variable "kubernetes_host" {
-  type = string
+  type      = string
   sensitive = true
 }
 
-variable "kubernetes_ca_certificate"{
-  type = string
+variable "kubernetes_ca_certificate" {
+  type      = string
   sensitive = true
 }
 
-variable "kubernetes_token"{
-  type = string
+variable "kubernetes_token" {
+  type      = string
   sensitive = true
 }

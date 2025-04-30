@@ -14,9 +14,9 @@ variable "harness_delegate_name" {
   type = string
 }
 
-variable "k8s_connector_project_identifier" {
-  type = string
-}
+# variable "k8s_connector_project_identifier" {
+#   type = string
+# }
 
 variable "k8s_connector_org_identifier" {
   type = string
