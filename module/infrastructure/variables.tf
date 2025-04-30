@@ -25,10 +25,10 @@ variable "harness_infrastructure_org_identifier" {
   type        = string
 }
 
-variable "harness_infrastructure_project_identifier" {
-  description = "Project identifier"
-  type        = string
-}
+# variable "harness_infrastructure_project_identifier" {
+#   description = "Project identifier"
+#   type        = string
+# }
 
 variable "harness_infrastructure_env_identifier" {
   description = "Environment identifier"

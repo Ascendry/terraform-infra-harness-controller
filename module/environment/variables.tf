@@ -10,9 +10,9 @@ variable "harness_org_identifier" {
   type = string
 }
 
-variable "harness_env_project_identifier" {
-  type = string
-}
+# variable "harness_env_project_identifier" {
+#   type = string
+# }
 
 variable "harness_env_type" {
   type = string

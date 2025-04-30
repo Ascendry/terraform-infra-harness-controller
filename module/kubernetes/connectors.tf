@@ -3,7 +3,6 @@ resource "harness_platform_connector_kubernetes" "inheritFromDelegate" {
   name        = var.k8s_connector_name
   description = "Kubernetes Connector"
   tags        = [var.k8s_cluster_name]
-  project_id  = var.k8s_connector_project_identifier
   org_id      = var.k8s_connector_org_identifier
 
   inherit_from_delegate {

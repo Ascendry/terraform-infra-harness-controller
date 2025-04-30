@@ -4,7 +4,6 @@ infrastructureDefinition:
   description: ""
   tags: {}
   orgIdentifier: ${orgIdentifier}
-  projectIdentifier: ${projectIdentifier}
   environmentRef: ${envIdentifier}
   deploymentType: ${deploymentType}
   type: ${type}
