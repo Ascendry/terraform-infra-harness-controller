@@ -14,6 +14,9 @@ provider "helm" {
 
 }
 
+locals {
+  k8s_connector_id = replace(var.harness_delegate_name, "-", "_")
+}
 module "delegate" {
   source  = "harness/harness-delegate/kubernetes"
   version = "0.1.8"
@@ -31,7 +34,7 @@ module "delegate" {
 
 module "harness_platform_connector_kubernetes" {
   source                       = "./module/kubernetes"
-  k8s_connector_identifier     = var.harness_delegate_name
+  k8s_connector_identifier     = local.k8s_connector_id
   k8s_cluster_name             = var.harness_delegate_name
   k8s_connector_name           = var.harness_delegate_name
   harness_delegate_name        = var.harness_delegate_name
