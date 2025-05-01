@@ -8,7 +8,7 @@ infrastructureDefinition:
   deploymentType: ${deploymentType}
   type: ${type}
   spec:
-    connectorRef: ${connectorRef}
+    connectorRef: org.${connectorRef}
     namespace: ${namespace}
     releaseName: release-<+INFRA_KEY>
     allowSimultaneousDeployments: ${allow_simultaneous_deployments}
