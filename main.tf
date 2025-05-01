@@ -61,7 +61,7 @@ module "harness_platform_infrastructure" {
   harness_infrastructure_env_identifier                 = local.harness_env_id
   harness_infrastructure_type                           = var.harness_infrastructure_type            #KUBERNETES
   harness_infrastructure_deployment_type                = var.harness_infrastructure_deployment_type #KubernetesDirect
-  harness_infrastructure_namespace                      = var.harness_delegate_name
+  harness_infrastructure_namespace                      = var.harness_namespace
   harness_infrastructure_allow_simultaneous_deployments = false
   harness_infrastructure_connector_identifier           = var.harness_delegate_name
   depends_on                                            = [module.harness_platform_environment]
