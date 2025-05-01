@@ -15,7 +15,9 @@ provider "helm" {
 }
 
 locals {
-  k8s_connector_id = replace(var.harness_delegate_name, "-", "_")
+  k8s_connector_id          = replace(var.harness_delegate_name, "-", "_")
+  harness_env_id            = replace(var.harness_delegate_name, "-", "_")
+  harness_infrastructure_id = replace(var.harness_delegate_name, "-", "_")
 }
 module "delegate" {
   source  = "harness/harness-delegate/kubernetes"
@@ -45,7 +47,7 @@ module "harness_platform_connector_kubernetes" {
 module "harness_platform_environment" {
   source                 = "./module/environment"
   harness_env_name       = var.harness_env_name
-  harness_env_identifier = var.harness_env_name
+  harness_env_identifier = local.harness_env_id
   harness_org_identifier = var.harness_org_identifier
   harness_env_type       = var.harness_env_type # PreProduction
   depends_on             = [module.harness_platform_connector_kubernetes]
@@ -53,7 +55,7 @@ module "harness_platform_environment" {
 
 module "harness_platform_infrastructure" {
   source                                                = "./module/infrastructure"
-  harness_infrastructure_identifier                     = var.harness_delegate_name
+  harness_infrastructure_identifier                     = local.harness_infrastructure_id
   harness_infrastructure_name                           = var.harness_delegate_name
   harness_infrastructure_org_identifier                 = var.harness_org_identifier
   harness_infrastructure_env_identifier                 = var.harness_env_name
